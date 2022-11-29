@@ -61,8 +61,8 @@ Sample spring application with Jenkins pipeline script to demonstrate secure pip
 
 - Login to Jenkins -> Manage Jenkins -> Configure System -> Scroll to bottom -> Configure the Dependency-Track URL and API key -> Also enable Auto Create Projects -> Test Connection -> Save
 
-**Hint:** URL (if you have followed the exact steps) http://dependency-track-apiserver.deptrack.svc.cluster.local
-(Format: severiceName.namespace.svc.cluster.local)
+**Hint:** URL (if you have followed the exact steps) http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local
+(Format: serviceName.namespace.svc.cluster.local)
 
 ### New Jenkins Pipeline
 
@@ -72,6 +72,15 @@ Create a new Jenkins pipeline with this repo and trigger build
 - Under pipeline section, Choose Pipeline script from SCM
 - Choose git as SCM and provide repo details
 - Save
+
+### Add the docker image in minikube cluster
+
+```s
+  minikube ssh
+  docker pull licensefinder/license_finder
+  ```
+
+Once the docker pull is completed, then run the pipeline Job in Jenkins.
 
 # Pipeline
 
