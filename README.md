@@ -82,6 +82,8 @@ Create a new Jenkins pipeline with this repo and trigger build
 
 Once the docker pull is completed, then run the pipeline Job in Jenkins.
 
+### Update the API Key in JenkinsFile in code, for "dependencyTrackPublisher"
+
 # Pipeline
 
 Refer the below screenshot for the stages in the pipeline
