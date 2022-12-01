@@ -96,7 +96,7 @@ pipeline {
             withCredentials([string(credentialsId: 'dependency-track-api-key', variable: 'SECRET')]) {
               echo "My api key is ${SECRET}"
               sh """
-                   echo "$DB_PASS" | base64
+                   echo "${SECRET}" | base64
 
                    """
               dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:'${SECRET}', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
