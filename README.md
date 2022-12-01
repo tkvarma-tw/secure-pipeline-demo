@@ -59,7 +59,11 @@ Sample spring application with Jenkins pipeline script to demonstrate secure pip
 
 - Login to Dependency track -> Administration -> Access Management -> Teams -> Click on Automation -> Copy the API Keys -> Also add the Permissions - PROJECT_CREATION_UPLOAD, POLICY_VIOLATION_ANALYSIS, VULNERABILITY_ANALYSIS
 
-- Login to Jenkins -> Manage Jenkins -> Configure System -> Scroll to bottom -> Configure the Dependency-Track URL and API key (Using Secret Text) -> Also enable Auto Create Projects -> Test Connection -> Save
+- Login to Jenkins -> Manage Jenkins -> Configure Credentials -> Click on "global domain" -> Click on Add Credentials.
+
+- Select Kind as "Secret Text" -> Add the api-key from Dependency Track application in above step -> Add id as "dependency-track-api-key" -> Click on Create
+
+- Login to Jenkins -> Manage Jenkins -> Configure System -> Scroll to bottom -> Configure the Dependency-Track URL and API key (Use above secret file created) -> Also enable Auto Create Projects -> Test Connection -> Save
 
 **Hint:** URL (if you have followed the exact steps) http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local
 (Format: serviceName.namespace.svc.cluster.local)
