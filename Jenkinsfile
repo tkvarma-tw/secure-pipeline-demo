@@ -6,6 +6,9 @@ pipeline {
       idleMinutes 1
     }
   }
+  environment{
+       DEP_TRACK_API_KEY = credentials('dependency-track-api-key')
+  }
   stages {
     stage('Setup') {
       parallel {
@@ -92,7 +95,7 @@ pipeline {
           }
           post {
             success {
-              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:'TnrWmyYIWojivDIvbwCBMgpU3MbrTsT4', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
+              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:$DEP_TRACK_API_KEY, artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
               archiveArtifacts allowEmptyArchive: true, artifacts: 'target/bom.xml', fingerprint: true, onlyIfSuccessful: true
             }
           }
