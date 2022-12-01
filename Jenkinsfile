@@ -94,7 +94,8 @@ pipeline {
           post {
             success {
             withCredentials([string(credentialsId: 'dependency-track-api-key', variable: 'SECRET')]) {
-              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:'$dependency-track-api-key', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
+              echo "My api key is ${dependency-track-api-key}"
+              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:'${dependency-track-api-key}', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
               archiveArtifacts allowEmptyArchive: true, artifacts: 'target/bom.xml', fingerprint: true, onlyIfSuccessful: true
             }
             }
