@@ -93,8 +93,8 @@ pipeline {
           }
           post {
             success {
-            withEnv(["DEP_TRACK_API_KEY=credentials('dependency-track-api-key)"]) {
-              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:$DEP_TRACK_API_KEY, artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
+            withCredentials([string(credentialsId: 'DEP_TRACK_API_KEY', variable: 'SECRET')]) {
+              dependencyTrackPublisher projectName: 'sample-spring-app', projectVersion: '0.0.1',dependencyTrackUrl:'http://deptrack-dependency-track-apiserver.deptrack.svc.cluster.local',dependencyTrackApiKey:'$DEP_TRACK_API_KEY', artifact: 'target/bom.xml', autoCreateProjects: true, synchronous: true
               archiveArtifacts allowEmptyArchive: true, artifacts: 'target/bom.xml', fingerprint: true, onlyIfSuccessful: true
             }
             }
