@@ -48,6 +48,7 @@ Sample spring application with Jenkins pipeline script to demonstrate secure pip
   - BlueOcean
   - Configuration as Code
   - OWASP Dependency-Track
+  - Update Kubernetes plugin to version 3802
 
 ### Dependency Track setup
 
